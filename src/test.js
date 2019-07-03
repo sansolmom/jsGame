@@ -19,7 +19,13 @@ function power(a,b) {
   if(b === null || b === undefined || b ===''){
     return a*a;
   }else{
-    return Math.pow(a, b);
+    //return Math.pow(a, b);
+    var output = 1;
+    for(var i=0; i < b ; i++){
+      output = output * a;
+    }
+
+    return output;
   }  
 }
 power(2);
@@ -29,6 +35,13 @@ function multiply(...numbers){
   return arr.reduce((a,b) => a*b);
 }
 
+function multiply2(){
+  var output = 1;
+  for(var i = 0 ; i< arguments.length; i++){
+    output = output * arguments[i];
+  }
+  return output;
+}
 
 const product = {
   price:'10,000원',
