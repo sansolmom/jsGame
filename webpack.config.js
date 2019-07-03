@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+//const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -29,8 +29,7 @@ module.exports = (env, options) => {
                 {
                     test: /\.js$/,
                     use: {
-                      loader: "babel-loader",
-                      options: { presets: ["es2015"] }
+                        loader: "babel-loader"
                     }
                 },
                 {
@@ -60,7 +59,17 @@ module.exports = (env, options) => {
             new MiniCssExtractPlugin({
                 filename: '[name].css',
                 chunkFilename: '[id].css'
-            })
+            }),
+            new HtmlWebpackPlugin({
+                title:'jsGameStudy',
+                minify: {
+                    collapseInlineTagWhitespace: true,
+                },
+                hash: true,
+                template:'index.html'
+
+            }),
+           
         ]
     }
 
@@ -87,7 +96,7 @@ module.exports = (env, options) => {
     } else {
     //... Production 설정
         config.plugins = [
-            new CleanWebpackPlugin(['dist'])
+            // new CleanWebpackPlugin('dist')
         ];
     }
 
